@@ -1,0 +1,15 @@
+{
+  "name": "Pigeon",
+  "version": "0.0.1",
+  "description": "A web application to deliver messages",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "node app/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Phoenix",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
