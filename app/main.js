@@ -1,7 +1,7 @@
-var express = require('express');
-var app = express();
+let express = require('express');
+let app = express();
 
-var port = 3000;
+const port = 3000;
 
 // Static directory
 app.use(express.static(__dirname + '/static'));
