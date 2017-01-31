@@ -1,5 +1,11 @@
 let express = require('express');
+let less = require('less-middleware');
 let app = express();
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(less(__dirname + '/static'));
+app.use(express.static(__dirname + '/static'));
 
 const port = 3000;
 
@@ -7,9 +13,6 @@ const port = 3000;
 let index = require('./routes/index');
 
 app.use('/', index);
-
-// Static directory
-app.use(express.static(__dirname + '/static'));
 
 app.listen(port);
 // Log to console
