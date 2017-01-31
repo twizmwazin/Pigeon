@@ -1,3 +1,4 @@
+// {{{ Express HTTP server setup
 let express = require('express');
 let less = require('less-middleware');
 let app = express();
@@ -13,6 +14,26 @@ const port = 3000;
 let index = require('./routes/index');
 
 app.use('/', index);
+// }}}
+
+// {{{ MongoDB database client setup
+let mongo = require('mongodb').MongoClient;
+let config = require('config');
+
+let mConf = config.get('mongo');
+let url = 'mongodb://' + mConf.host + ':' + mConf.port + '/' + mConf.database;
+console.log(url);
+
+mongo.connect(url, function(err, db) {
+  if (err) {
+    console.log('Unable to connect to database. Exiting...');
+    exit(1);
+  } else {
+    console.log('Successfully connected to database');
+  }
+});
+
+// }}}
 
 app.listen(port);
 // Log to console
