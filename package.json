@@ -10,6 +10,7 @@
   "author": "Kevin Phoenix",
   "license": "MIT",
   "dependencies": {
+    "config": "^1.24.0",
     "ejs": "^2.5.5",
     "express": "^4.14.1",
     "less-middleware": "^2.2.0"
