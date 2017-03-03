@@ -3,9 +3,12 @@ let express = require('express');
 let less = require('less-middleware');
 let app = express();
 
+// Set up EJS views
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+// Set LESS for CSS pre-processing
 app.use(less(__dirname + '/static'));
+// Set up static directory
 app.use(express.static(__dirname + '/static'));
 
 const port = 3000;
