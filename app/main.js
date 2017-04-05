@@ -26,6 +26,7 @@ let config = require('config');
 let mConf = config.get('mongo');
 let url = 'mongodb://' + mConf.host + ':' + mConf.port + '/' + mConf.database;
 console.log(url);
+let database = null;
 
 mongo.connect(url, function(err, db) {
   if (err) {
@@ -33,6 +34,7 @@ mongo.connect(url, function(err, db) {
     exit(1);
   } else {
     console.log('Successfully connected to database');
+    database = db;
   }
 });
 
