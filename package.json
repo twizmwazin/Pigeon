@@ -1,6 +1,7 @@
 {
   "name": "Pigeon",
   "version": "0.0.1",
+  "repository": "https://github.com/twizmwazin/Pigeon",
   "description": "A web application to deliver messages",
   "main": "app/main.js",
   "scripts": {
