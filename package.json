@@ -5,7 +5,7 @@
   "description": "A web application to deliver messages",
   "main": "app/main.js",
   "scripts": {
-    "start": "node app/main.js",
+    "start": "(command -v nodejs && nodejs app/main.js) || (command -v node && node app/main.js)",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kevin Phoenix",
