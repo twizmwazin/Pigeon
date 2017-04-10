@@ -33,13 +33,14 @@ function updateCurrent(db) {
       weather: jbody.weather,
       temp: jbody.main.temp,
     };
-    let collection = db.collection('weather');
-    let docs = collection.find({}).toArray();
-    collection.insertOne(commit);
-    for (let i = 0; i < docs.length; ++i) {
-      collection.deleteOne(docs[i]);
-    }
-    console.log('Updated weather successfully.');
+    db.createCollection('weather', function(err, collection) {
+      let docs = collection.find({}).toArray();
+      collection.insertOne(commit);
+      for (let i = 0; i < docs.length; ++i) {
+        collection.deleteOne(docs[i]);
+      }
+      console.log('Updated weather successfully.');
+    });
   });
 };
 
@@ -48,5 +49,7 @@ function updateCurrent(db) {
  * @param {database} db The mongo database/
  */
 function updateForcast(db) {
-  // TODO
+    // TODO
 };
+
+module.exports = {update};
