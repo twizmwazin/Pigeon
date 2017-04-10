@@ -25,8 +25,8 @@ function updateCurrent(db) {
   let host = 'http://api.openweathermap.org';
   let path = '/data/2.5/weather?zip=' + zip + '&appid=' + token;
   request(host + path, function(error, response, body) {
-    console.log('error:', error);
-    console.log('statusCode:', response && response.statusCode);
+    console.log('weather error:', error);
+    console.log('weather statusCode:', response && response.statusCode);
     let jbody = JSON.parse(body);
     let commit = {
       city: jbody.name,
@@ -49,7 +49,20 @@ function updateCurrent(db) {
  * @param {database} db The mongo database/
  */
 function updateForcast(db) {
-    // TODO
+  let host = 'http://api.openweathermap.org';
+  let path = '/data/2.5/forecast?zip=' + zip + '&appid=' + token;
+  request(host + path, function(error, response, body) {
+    console.log('forecast error:', error);
+    console.log('forecast statusCode:', response && response.statusCode);
+    let jbody = JSON.parse(body);
+    db.createCollection('forecast', function(err, collection) {
+      for (let i = 0; i < jbody.list.size; ++i) {
+        collection.deleteMany({dt: jbody.list[i].dt});
+        collection.insertOne(jbody.list[i]);
+      }
+      console.log('Updated forecast successfully.');
+    });
+  });
 };
 
 module.exports = {update};
