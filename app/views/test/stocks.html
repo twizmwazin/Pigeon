@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width = device-width, initial-scale = 1">
+<title>Stock Card</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-color:lightgrey" >
+
+<br></br>
+<br></br>
+ 
+<div class="container" >
+ 
+  <div class="row">
+  
+	  <!-- center the card in the middle. when there are other cards the offset on 
+	  md & lg will be 2 cards per row. On sm & xs one card will be fit per row --> 
+  <div class="col-md-3"></div> 
+ 
+  
+  <div class="col-md-6">
+ 
+	<!-- the well gives the card a border-->
+	<div class="well" style="background-color:#ffffff">
+    <!-- The table class adds nice spacing and the other classes add additional style -->
+    <table class="table table-condensed" >
+		<thead>
+			<tr>
+				<td colspan="5" class="text-center">	
+					<h2>Stocks</h2>
+				</td>
+
+
+			</tr>
+		</thead>
+		<tbody>
+			<!--This will be the basic stock. When the back-end is available, I will merge the two such that for every stock
+			specified in the the settings file is displayed with the correct info.
+			Hopefully the display will be highly dynamic such that the number of stocks displayed can be changed, you can 
+			have multiple rows.-->
+			<tr>
+				<td colspan = "4" class="text-left"> 
+					<p>name of stock/index</p>
+					<p style="color:grey">stock/index symbol</p>
+				</td>
+				<td class="text-right"> 
+					<p>points</p>
+					<p>
+						todays change
+						<i class="fa fa-arrow-down" aria-hidden="true" style="color:#ff0000"></i>
+						<i class="fa fa-arrow-up" aria-hidden="true" style="color:#00ff00"></i>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan ="5"></td>
+			</tr>
+		</tbody>
+    </table>
+	<p class="text-right"> Stock data updated x time ago </p>
+	</div>
+  </div>
+  <div class="col-md-3"></div> 
+</div>
+</div>
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
