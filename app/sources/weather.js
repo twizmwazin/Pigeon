@@ -14,7 +14,7 @@ let zip = weatherConf.get('zip');
  */
 function update(db) {
   updateCurrent(db);
-  updateForcast(db);
+  updateForecast(db);
 };
 
 /**
@@ -45,10 +45,10 @@ function updateCurrent(db) {
 };
 
 /**
- * Requests forcasted weather and commits to mongo.
+ * Requests forecasted weather and commits to mongo.
  * @param {database} db The mongo database/
  */
-function updateForcast(db) {
+function updateForecast(db) {
   let host = 'http://api.openweathermap.org';
   let path = '/data/2.5/forecast?zip=' + zip + '&appid=' + token;
   request(host + path, function(error, response, body) {
