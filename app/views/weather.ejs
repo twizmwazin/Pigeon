@@ -1,87 +1,87 @@
 <html>
-  <% include head %> 
+  <% include head %>
   <body>
 
-	<br></br>
-	<br></br>
-	 
-	<div class="container" >
-	 
-	  <div class="row">
-	  
-	  <!-- center the card in the middle. when there are other cards the offset on md & lg will be 2 cards per row. On sm & xs one card will be fit per row --> 
-	  <div class="col-md-3"></div> 
-	 
-	  
-	  <div class="col-md-6">
-	 
-		<!-- the well gives the card a border-->
-		<div class="well">
-		<!-- The table class adds nice spacing and the other classes add additional style -->
-		<table class="table table-condensed">
-			<thead>
-				<tr>
-					<td colspan="5">	
-						<h1> <%= Math.round(((temp-273)*(9/5))+32) %>&deg; in <%= city %> 
-						<img src="http://openweathermap.org/img/w/10d.png" alt="pic" style="float:right;width:200px;height:100px;" class="image-resposive" width="100%">
-						</h1
-					</td>
-				
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<% var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] %>
-					<% var date = new Date() %>
-					<% var currentDay = date.getDay() %>
+    <br></br>
+    <br></br>
 
-					<% for(var i=0; i<5; i++) { %>	
-						<th class="text-center" > <%= days[currentDay++] %>  </td>
-						<% if (currentDay === 7) { %>
-							<% currentDay =0%>
-						<% } %>
-						
-					<% } %>
-				 
-						
-						
-				</tr>
+    <div class="container" >
 
-				<!--pic row -->
-				<tr>
-					<% for(var i=0; i<5; i++) { %>	
-						<td class="text-center"> 
-							<img src="http://openweathermap.org/img/w/10d.png" alt="pic" style="float:center;width:40px;height:40x;" class="image-resposive" width="100%">
-						</td>
-					<% } %>
-						
-				</tr>
+      <div class="row">
 
-				<!-- High -->
-				<tr>
-					<% for(var i=0; i<5; i++) { %>	
-						<td class="text-center"> hi</td>
-					<% } %>
+	<!-- center the card in the middle. when there are other cards the offset on md & lg will be 2 cards per row. On sm & xs one card will be fit per row -->
+	<div class="col-md-3"></div>
 
-				</tr>
 
-				<!-- low -->
-				<tr>
-					<% for(var i=0; i<5; i++) { %>	
-						<td class="text-center"> low</td>
-					<% } %>
+	<div class="col-md-6">
 
-				</tr>
-			</tbody>
-		</table>
-		<p class="text-right"> Weather updated unix time ago </p>
-		</div>
+	  <!-- the well gives the card a border-->
+	  <div class="well">
+	    <!-- The table class adds nice spacing and the other classes add additional style -->
+	    <table class="table table-condensed">
+	      <thead>
+		<tr>
+		  <td colspan="5">
+		    <h1> <%= Math.round(((temp-273)*(9/5))+32) %>&deg; in <%= city %>
+		    <img src="http://openweathermap.org/img/w/10d.png" alt="pic" style="float:right;width:200px;height:100px;" class="image-resposive" width="100%">
+		    </h1
+		  </td>
+
+		</tr>
+	      </thead>
+	      <tbody>
+		<tr>
+		  <% var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] %>
+		  <% var date = new Date() %>
+		  <% var currentDay = date.getDay() %>
+
+		  <% for(var i=0; i<5; i++) { %>
+		    <th class="text-center" > <%= days[currentDay++] %>  </td>
+		    <% if (currentDay === 7) { %>
+		      <% currentDay =0%>
+		    <% } %>
+
+		  <% } %>
+
+
+
+		</tr>
+
+		<!--pic row -->
+		<tr>
+		  <% for(var i=0; i<5; i++) { %>
+		    <td class="text-center">
+		      <img src="http://openweathermap.org/img/w/10d.png" alt="pic" style="float:center;width:40px;height:40x;" class="image-resposive" width="100%">
+		    </td>
+		  <% } %>
+
+		</tr>
+
+		<!-- High -->
+		<tr>
+		  <% for(var i=0; i<5; i++) { %>
+		    <td class="text-center"> hi</td>
+		  <% } %>
+
+		</tr>
+
+		<!-- low -->
+		<tr>
+		  <% for(var i=0; i<5; i++) { %>
+		    <td class="text-center"> low</td>
+		  <% } %>
+
+		</tr>
+	      </tbody>
+	    </table>
+	    <p class="text-right"> Weather updated unix time ago </p>
 	  </div>
-	  <div class="col-md-3"></div> 
 	</div>
-	</div>
-	 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	  </body>
-	</html>
+	<div class="col-md-3"></div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
