@@ -1,0 +1,38 @@
+The weather source use OpenWeatherMap's weather and forecast APIs for fetching
+data.
+Weather documentation: https://openweathermap.org/current
+Forecast documentation: https://openweathermap.org/forecast5
+
+The weather data is stored in the 'weather' collection in mongo. The weather
+documents will look like:
+
+{
+  city: city_name
+  temp: current_temperature_in_K
+  weather: {
+    id: openweathermap_id_num
+    main: string_description
+    description: longer_string_description
+    icon: openweathermap_icon
+  }
+}
+
+The forecast data is stored in the 'forecast' collection in mongo. The forecast
+documents will look like:
+
+{
+  dt: epoch_time
+  main: {
+    temp: predicted_temp
+    temp_min: predicted_temp_min
+    temp_max: predicted_temp_max
+    pressure: predicted_pressure
+    sea_level: predicted_sea_level
+    grnd_level: predicted_ground_level
+    humidity: predicted_humidity
+    temp_kf: internal_owm_value
+  }
+}
+
+There are many forecast data stored, and the 'dt' parameter is useful for
+finding the correct forecast data.
