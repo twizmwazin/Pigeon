@@ -1,0 +1,9 @@
+This document is to serve as an overview for the backend implementation of
+Pigeon.
+
+Pigeon uses node-cron to run update functions that fetch API data and store it
+in mongo. An example module used for weather can be found at
+app/sources/weather.js in the repository. The module pulls data from
+OpenWeatherMap's API, then reformats the data and stores it in mongo for the
+frontend to use. These functions are called periodically via node-cron, as seen
+in app/sources/dispatch.js.
