@@ -32,6 +32,7 @@ function updateCurrent(db) {
       city: jbody.name,
       weather: jbody.weather,
       temp: jbody.main.temp,
+      updated: Date.now(),
     };
     db.createCollection('weather', function(err, collection) {
       let docs = collection.find({}).toArray();

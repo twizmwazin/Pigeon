@@ -9,6 +9,7 @@ documents will look like:
 {
   city: city_name
   temp: current_temperature_in_K
+  updated: epoch_time_updated
   weather: {
     id: openweathermap_id_num
     main: string_description
