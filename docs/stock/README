@@ -1,0 +1,12 @@
+The stocks source uses AlphaVantage's stock API.
+AlphaVantage documentation: http://www.alphavantage.co/documentation/
+
+Stock data is stored in the 'stock' collection in mongo. For each symbol
+specified in the congig, there will be an object looking like this:
+
+{
+  symbol: symbol
+  updated: epoch_time
+  open: opening_price
+  close: closing_or_current_price
+}
