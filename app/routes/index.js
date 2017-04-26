@@ -37,6 +37,7 @@ router.get('/', function(req, res) {
           collectionStocks.findOne({symbol: stockSymbols[i]}, function(err, item) {
             stocks.push(item);  
             if (++counter === stockSymbols.length) {
+              console.log(stocks);
               res.render('index', {
                 weather: item,
                 stock: stocks,
