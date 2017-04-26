@@ -27,13 +27,13 @@
 							<% for (let i = 0; i < stock.length; ++i) { %>
 								<tr>
 									<td colspan = "4" class="text-left"> 
-										<p> <%= stock[i].get() %>  </p>
+										<p> <%= stock[i].symbol %>  </p>
 										<p style="color:grey">stock/index symbol</p>
 									</td>
 									<td class="text-right"> 
-										<p>points</p>
+										<p><%= stock[i].close %></p>
 										<p>
-											todays change
+											<%= stock[i].open %>
 											<i class="fa fa-arrow-down" aria-hidden="true" style="color:#ff0000"></i>
 											<i class="fa fa-arrow-up" aria-hidden="true" style="color:#00ff00"></i>
 										</p>
@@ -45,7 +45,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<p class="text-right"> Stock data updated x time ago </p>
+					<p class="text-right"> <%= stock[0].updated %>  </p>
 				</div>
 			</div>
 			<div class="col-md-3"></div> 
