@@ -27,19 +27,18 @@ router.get('/', function(req, res) {
     } else {
       console.log('Successfully connected to database');
       let collection = db.collection('weather');
-      
+
       collection.findOne({}, function(err, item) {
-        console.log(item);
+        let weather = item;
         let counter = 0;
         let stocks = [];
-        let collectionStocks = db.collection('stock');  
+        let collectionStocks = db.collection('stock');
         for (let i = 0; i < stockSymbols.length; ++i) {
           collectionStocks.findOne({symbol: stockSymbols[i]}, function(err, item) {
-            stocks.push(item);  
+            stocks.push(item);
             if (++counter === stockSymbols.length) {
-              console.log(stocks);
               res.render('index', {
-                weather: item,
+                weather: weather,
                 stock: stocks,
               });
             }
