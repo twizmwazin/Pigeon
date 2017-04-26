@@ -16,9 +16,11 @@ const port = 3000;
 // Routers
 let index = require('./routes/index');
 let weather = require('./routes/weather');
+let stocks= require('./routes/stocks');
 
 app.use('/', index);
 app.use('/', weather);
+app.use('/', stocks);
 // }}}
 
 // {{{ MongoDB database client setup

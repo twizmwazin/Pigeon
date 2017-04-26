@@ -1,0 +1,14 @@
+This document is to serve an overview for the frontend implementation of Pigeon.
+
+Pigeon frontend uses EJS(a client-side templating language) coupled with Bootstrap to make cards that display relevant information. Javascrpit is used to fetch data from the Mongo database to display the information cards. Bootstrap is used to make cards highly dynamic and be able to fit in any modern display that can that can range in size. LESS is a CSS pre-processor that extend the functionality of CSS giving us more customization options. Example frontend cards can be seen in /app/views/weather.ejs and /app/views/stocks.ejs. The final 
+
+sources:
+
+NodeJS
+https://nodejs.org/en/
+Embedded Javascript
+http://ejs.co/
+LESS
+http://lesscss.org/
+Bootstrap
+http://getbootstrap.com/

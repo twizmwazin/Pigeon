@@ -26,7 +26,7 @@ router.get('/routes/weather', function(req, res) {
       console.log('Successfully connected to database');
       let collection = db.collection('weather');
       collection.findOne({}, function(err, item) {
-        res.render('weather', item);
+        res.render('weather', {weather: item});
       });
     }
   });
