@@ -7,6 +7,7 @@ let config = require('config');
 let weatherConf = config.get('weather');
 let token = weatherConf.get('token');
 let zip = weatherConf.get('zip');
+let moment = require('moment');
 
 /**
  * Updates all data for this module.
@@ -45,6 +46,34 @@ function updateCurrent(db) {
   });
 };
 
+function createDay(day, all) {
+  let result = {
+    day: day,
+    min: -1,
+    max: -1,
+    icon: null,
+  };
+
+  let dayTimes = [];
+  let midnight = moment().add(day, 'days').startOf('day').unix();
+  for (let i = 0; i < all.length; ++i) {
+    if (all[i].dt >= midnight && all[i].dt < midnight + 86400) {
+      dayTimes.push(all[i]);
+    }
+  }
+  for (let i = 0; i < dayTimes.length; ++i) {
+    if (result.min == -1 || dayTimes[i].main.temp_min < result.min) {
+      result.min = dayTimes[i].main.temp_min;
+    }
+    if (result.max == -1 || dayTimes[i].main.temp_max > result.max) {
+      result.max = dayTimes[i].main.temp_max;
+    }
+  }
+  result.icon = dayTimes[Math.floor(dayTimes.length / 2)].weather[0].icon;
+  return result;
+}
+
+
 /**
  * Requests forecasted weather and commits to mongo.
  * @param {database} db The mongo database/
@@ -56,11 +85,14 @@ function updateForecast(db) {
     console.log('forecast error:', error);
     console.log('forecast statusCode:', response && response.statusCode);
     let jbody = JSON.parse(body);
+    let commits = [];
+    for (let i = 1; i <= 5; ++i) {
+      commits.push(createDay(i, jbody.list));
+    }
     db.createCollection('forecast', function(err, collection) {
-      for (let i = 0; i < jbody.list.size; ++i) {
-        collection.deleteMany({dt: jbody.list[i].dt});
-        collection.insertOne(jbody.list[i]);
-      }
+      collection.deleteMany({}, function(err, res) {
+        collection.insertMany(commits);
+      });
       console.log('Updated forecast successfully.');
     });
   });
