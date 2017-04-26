@@ -1,3 +1,4 @@
+let config = require('config');
 // {{{ Express HTTP server setup
 let express = require('express');
 let less = require('less-middleware');
@@ -11,7 +12,7 @@ app.use(less(__dirname + '/static'));
 // Set up static directory
 app.use(express.static(__dirname + '/static'));
 
-const port = 3000;
+const port = config.get('pigeon').get('port');
 
 // Routers
 let index = require('./routes/index');
@@ -25,7 +26,6 @@ app.use('/', stocks);
 
 // {{{ MongoDB database client setup
 let mongo = require('mongodb').MongoClient;
-let config = require('config');
 
 let mConf = config.get('mongo');
 let url = 'mongodb://' + mConf.host + ':' + mConf.port + '/' + mConf.database;

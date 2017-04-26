@@ -1,4 +1,7 @@
 {
+  "pigeon": {
+    "port": 3000
+  },
   "mongo": {
     "host": "localhost",
     "port": 27017,
