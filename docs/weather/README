@@ -22,18 +22,8 @@ The forecast data is stored in the 'forecast' collection in mongo. The forecast
 documents will look like:
 
 {
-  dt: epoch_time
-  main: {
-    temp: predicted_temp
-    temp_min: predicted_temp_min
-    temp_max: predicted_temp_max
-    pressure: predicted_pressure
-    sea_level: predicted_sea_level
-    grnd_level: predicted_ground_level
-    humidity: predicted_humidity
-    temp_kf: internal_owm_value
-  }
+  day: days_from_now
+  min: min_temp
+  max: max_temp
+  icon: openweathermap_icon
 }
-
-There are many forecast data stored, and the 'dt' parameter is useful for
-finding the correct forecast data.
