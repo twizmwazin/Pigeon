@@ -27,7 +27,7 @@ router.get('/routes/weather', function(req, res) {
       let collection = db.collection('weather');
       collection.findOne({}, function(err, item) {
         let forecastcollection = db.collection('forecast');
-        forecastcollection.find({}, function(err, forecast) {
+        forecastcollection.find({}).toArray(function(err, forecast) {
           res.render('weather', {
             weather: item,
             forecast: forecast,

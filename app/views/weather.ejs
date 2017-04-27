@@ -46,7 +46,7 @@
 		<tr>
 		  <% for(var i=0; i<5; i++) { %>
 		    <td class="text-center">
-		      <img src="http://openweathermap.org/img/w/10d.png" alt="pic" style="float:center;width:40px;height:40x;" class="image-resposive" width="100%">
+		      <img src="http://openweathermap.org/img/w/<%= forecast[i].icon %>.png" alt="pic" style="float:center;width:40px;height:40x;" class="image-resposive" width="100%">
 		    </td>
 		  <% } %>
 
@@ -54,18 +54,25 @@
 
 		<!-- High -->
 		<tr>
-		  <% for (var i = 0; i < 5; ++i) { %>
-		    <td class="text-center"><%= forecast %> </td>
+		  <% for (let i = 0; i < 5; ++i) { %>
+		    <% for ( let j = 0; j < 5; ++j) { %>
+		      <% if ( forecast[j].day == i+1) { %>
+			<td class="text-center"><%= Math.round(((forecast[j].max-273)*(9/5))+32) %>&deg; </td>
+		      <% } %>
+		    <% } %>
 		  <% } %>
 
 		</tr>
 
 		<!-- low -->
 		<tr>
-		  <% for(var i=0; i<5; i++) { %>
-		    <td class="text-center"> low</td>
+		  <% for (let i = 0; i < 5; ++i) { %>
+		    <% for ( let j = 0; j < 5; ++j) { %>
+		      <% if ( forecast[j].day == i+1) { %>
+			<td class="text-center"> <%= Math.round(((forecast[j].min-273)*(9/5))+32) %>&deg; </td>
+		      <% } %>
+		    <% } %>
 		  <% } %>
-
 		</tr>
 	      </tbody>
 	    </table>
