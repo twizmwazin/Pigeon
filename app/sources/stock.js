@@ -18,15 +18,12 @@ function update(db) {
       collection.deleteOne({symbol: symbols[i]});
       request(formatURL(symbols[i], token), function(err, response, body) {
         let jbody = JSON.parse(body);
-        let d = new Date();
-        let date = (d.getYear() + 1900)
-          + '-' + (d.getMonth() < 10 ? '0' + d.getMonth() : d.getMonth())
-          + '-' + (d.getDay() < 10 ? '0' + d.getDay() : d.getDay());
+        let refreshed = jbody['Meta Data']['3. Last Refreshed'];
         collection.insertOne({
           symbol: symbols[i],
           updated: Date.now(),
-          open: jbody['Time Series (Daily)'][date]['1. open'],
-          close: jbody['Time Series (Daily)'][date]['4. close'],
+          open: jbody['Time Series (Daily)'][refreshed]['1. open'],
+          close: jbody['Time Series (Daily)'][refreshed]['4. close'],
         });
         console.log('Updated stocks successfully');
       });
