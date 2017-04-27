@@ -4,19 +4,21 @@
 
 		<div class="row">
 
-			<!-- center the card in the middle. when there are other cards the offset on md & lg will be 2 cards per row. On sm & xs one card will be fit per row --> 
-			<div class="col-md-3"></div> 
-
+			<!-- center the card in the middle. when there are other cards the offset
+			on md & lg will be 2 cards per row. On sm & xs one card will be fit
+			per row -->
+			<div class="col-md-3"></div>
 
 			<div class="col-md-6">
 
 				<!-- the well gives the card a border-->
 				<div class="well" style="background-color:#ffffff">
-					<!-- The table class adds nice spacing and the other classes add additional style -->
+					<!-- The table class adds nice spacing and the other classes add
+					additional style -->
 					<table class="table table-condensed" >
 						<thead>
 							<tr>
-								<td colspan="4">	
+								<td colspan="4">
 									<h2 >Your Stocks</h2>
 								</td>
 
@@ -26,10 +28,10 @@
 						<tbody>
 							<% for (let i = 0; i < stock.length; ++i) { %>
 								<tr>
-									<td colspan = "4" class="text-left"> 
+									<td colspan = "4" class="text-left">
 										<p style="font-size:24px"> <%= stock[i].symbol %>  </p>
 									</td>
-									<td class="text-right"> 
+									<td class="text-right">
 										<% let currentprice = stock[i].close; %>
 										<% currentprice = (currentprice/1.0).toFixed(2);  %>
 										<% console.log(currentprice); %>
@@ -71,7 +73,7 @@
 					<p class="text-right"> Stock updated <%= updated %> mins ago  </p>
 				</div>
 			</div>
-			<div class="col-md-3"></div> 
+			<div class="col-md-3"></div>
 		</div>
 	</div>
 

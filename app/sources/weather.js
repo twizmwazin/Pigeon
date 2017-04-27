@@ -44,6 +44,12 @@ function updateCurrent(db) {
   });
 };
 
+/**
+ * Creates the database commit for the forecast of a given day.
+ * @param {int} day The day number (1-5)
+ * @param {list} all All forecast as given by the API
+ * @return {object} The object to commit to mongo.
+ */
 function createDay(day, all) {
   let result = {
     day: day,

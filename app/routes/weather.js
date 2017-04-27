@@ -5,18 +5,6 @@ let mongo = require('mongodb').MongoClient;
 let mConf = config.get('mongo');
 let url = 'mongodb://' + mConf.host + ':' + mConf.port + '/' + mConf.database;
 
-function connectToDB() {
-  mongo.connect(url, function(err, db) {
-    if (err || !db) {
-      console.log('Unable to connect to database. Exiting...');
-      exit(1);
-    } else {
-      console.log('Successfully connected to database');
-      return db;
-    }
-  });
-}
-
 router.get('/routes/weather', function(req, res) {
   mongo.connect(url, function(err, db) {
     if (err || !db) {
