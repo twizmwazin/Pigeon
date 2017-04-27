@@ -37,9 +37,16 @@ router.get('/', function(req, res) {
           collectionStocks.findOne({symbol: stockSymbols[i]}, function(err, item) {
             stocks.push(item);
             if (++counter === stockSymbols.length) {
-              res.render('index', {
-                weather: weather,
-                stock: stocks,
+              collection.findOne({}, function(err, temp) {
+                let forecastcollection = db.collection('forecast');
+                forecastcollection.find({}, function(err, forecast) {
+                  console.log(forecast);
+                  res.render('index', {
+                    weather: temp,
+                    forecast: forecast,
+                    stock: stocks,
+                  });
+                });
               });
             }
           });

@@ -54,8 +54,8 @@
 
 		<!-- High -->
 		<tr>
-		  <% for(var i=0; i<5; i++) { %>
-		    <td class="text-center"> </td>
+		  <% for (var i = 0; i < 5; ++i) { %>
+		    <td class="text-center"><%= forecast %> </td>
 		  <% } %>
 
 		</tr>
@@ -69,7 +69,14 @@
 		</tr>
 	      </tbody>
 	    </table>
-	    <p class="text-right"> Weather updated unix time ago </p>
+	    <% let before = (weather.updated)/1000; %>
+	    <% console.log(before) %>
+	    <% let curr = (new Date().getTime())/1000; %>
+	    <% console.log(before); %>
+	    <% console.log(curr); %>
+
+	    <% let updated  = Math.round((curr - before)/60); %>
+	    <p class="text-right"> Weather updated <%= updated %> time ago </p>
 	  </div>
 	</div>
 	<div class="col-md-3"></div>

@@ -17,7 +17,7 @@
 						<thead>
 							<tr>
 								<td colspan="4">	
-									<h4>Your Stocks</h4>
+									<h2 >Your Stocks</h2>
 								</td>
 
 
@@ -27,16 +27,30 @@
 							<% for (let i = 0; i < stock.length; ++i) { %>
 								<tr>
 									<td colspan = "4" class="text-left"> 
-										<p> <%= stock[i].symbol %>  </p>
-										<p style="color:grey">stock/index symbol</p>
+										<p style="font-size:24px"> <%= stock[i].symbol %>  </p>
 									</td>
 									<td class="text-right"> 
-										<p><%= stock[i].close %></p>
-										<p>
-											<%= stock[i].open %>
-											<i class="fa fa-arrow-down" aria-hidden="true" style="color:#ff0000"></i>
-											<i class="fa fa-arrow-up" aria-hidden="true" style="color:#00ff00"></i>
-										</p>
+										<% let currentprice = stock[i].close; %>
+										<% currentprice = (currentprice/1.0).toFixed(2);  %>
+										<p> <%= currentprice %> </p>
+										<% let diff  = stock[i].open - stock[i].close; %>
+										<% let percent = ((diff)/stock[i].open)*100; %>
+										<% diff  = diff.toFixed(2); %>
+										<% percent = percent.toFixed(2); %>
+										<% if ( diff < 0 ) { %>
+											<p style ="color:red">
+												<%= diff %> (<%= percent %>%)
+
+												<i class="fa fa-arrow-down" aria-hidden="true" style="color:#ff0000"></i>
+											</p>
+										<% } %>
+										<% if ( diff > 0 ) { %>
+											<p style ="color:green">
+												<%= diff %> (<%= percent %>%)
+
+												<i class="fa fa-arrow-up" aria-hidden="true" style="color:#00ff00"></i>
+											</p>
+										<% } %>
 									</td>
 								</tr>
 							<% } %>
@@ -45,7 +59,14 @@
 							</tr>
 						</tbody>
 					</table>
-					<p class="text-right"> <%= stock[0].updated %>  </p>
+					<% let before = (stock[0].updated)/1000; %>
+					<% let curr = (new Date().getTime())/1000; %>
+					<% console.log(before); %>
+					<% console.log(curr); %>
+
+					<% let updated  = Math.round((curr - before)/60); %>
+
+					<p class="text-right"> Stock updated <%= updated %> mins ago  </p>
 				</div>
 			</div>
 			<div class="col-md-3"></div> 
