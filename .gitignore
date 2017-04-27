@@ -1,3 +1,4 @@
 node_modules
 *.css
 config/local.json
+npm-debug.log
