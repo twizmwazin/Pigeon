@@ -36,11 +36,9 @@ function updateCurrent(db) {
       updated: Date.now(),
     };
     db.createCollection('weather', function(err, collection) {
-      let docs = collection.find({}).toArray();
-      collection.insertOne(commit);
-      for (let i = 0; i < docs.length; ++i) {
-        collection.deleteOne(docs[i]);
-      }
+      collection.deleteMany({}, function(err, res) {
+        collection.insertOne(commit);
+      });
       console.log('Updated weather successfully.');
     });
   });
