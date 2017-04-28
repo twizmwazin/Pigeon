@@ -26,8 +26,10 @@ function updateCurrent(db) {
   let host = 'http://api.openweathermap.org';
   let path = '/data/2.5/weather?zip=' + zip + '&appid=' + token;
   request(host + path, function(error, response, body) {
-    console.log('weather error:', error);
-    console.log('weather statusCode:', response && response.statusCode);
+    if (err) {
+      console.error('weather error:', error);
+      console.error('weather statusCode:', response && response.statusCode);
+    }
     let jbody = JSON.parse(body);
     let commit = {
       city: jbody.name,
@@ -86,8 +88,10 @@ function updateForecast(db) {
   let host = 'http://api.openweathermap.org';
   let path = '/data/2.5/forecast?zip=' + zip + '&appid=' + token;
   request(host + path, function(error, response, body) {
-    console.log('forecast error:', error);
-    console.log('forecast statusCode:', response && response.statusCode);
+    if (err) {
+      console.error('forecast error:', error);
+      console.error('forecast statusCode:', response && response.statusCode);
+    }
     let jbody = JSON.parse(body);
     let commits = [];
     for (let i = 1; i <= 5; ++i) {

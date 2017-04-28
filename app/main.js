@@ -29,7 +29,7 @@ let mongo = require('mongodb').MongoClient;
 
 let mConf = config.get('mongo');
 let url = 'mongodb://' + mConf.host + ':' + mConf.port + '/' + mConf.database;
-console.log(url);
+console.log('Connecting to mongo at:', url);
 
 mongo.connect(url, function(err, db) {
   if (err || !db) {
@@ -46,7 +46,6 @@ mongo.connect(url, function(err, db) {
 app.listen(port);
 // Log to console
 console.log('Pigeon has started.');
-console.log(__dirname);
 console.log('Listening for connections on port ' + port + '.');
 
 // {{{ Functions

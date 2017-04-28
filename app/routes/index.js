@@ -27,7 +27,6 @@ router.get('/', function(req, res) {
               collection.findOne({}, function(err, temp) {
                 let forecastcollection = db.collection('forecast');
                 forecastcollection.find({}).toArray(function(err, forecast) {
-                  console.log(forecast);
                   res.render('index', {
                     weather: temp,
                     forecast: forecast,

@@ -21,7 +21,6 @@ router.get('/routes/stocks', function(req, res) {
           function(err, item) {
           stocks.push(item);
           if (++counter === stockSymbols.length) {
-            console.log(stocks);
             res.render('stocks', {
               stock: stocks,
             });

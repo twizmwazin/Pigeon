@@ -17,6 +17,10 @@ function update(db) {
     db.createCollection('stock', function(err, collection) {
       collection.deleteOne({symbol: symbols[i]});
       request(formatURL(symbols[i], token), function(err, response, body) {
+        if (err) {
+          console.error('stock error:', error);
+          console.error('stock statusCode:', response && response.statusCode);
+        }
         let jbody = JSON.parse(body);
         let refreshed = jbody['Meta Data']['3. Last Refreshed'];
         collection.insertOne({

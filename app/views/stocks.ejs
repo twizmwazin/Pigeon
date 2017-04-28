@@ -34,9 +34,7 @@
 									<td class="text-right">
 										<% let currentprice = stock[i].close; %>
 										<% currentprice = (currentprice/1.0).toFixed(2);  %>
-										<% console.log(currentprice); %>
 										<p> <%= currentprice %> </p>
-										<% console.log(stock[i].open); %>
 										<% let diff  = stock[i].close - stock[i].open; %>
 										<% let percent = ((diff)/stock[i].open)*100; %>
 										<% diff  = diff.toFixed(2); %>
@@ -65,8 +63,6 @@
 					</table>
 					<% let before = (stock[0].updated)/1000; %>
 					<% let curr = (new Date().getTime())/1000; %>
-					<% console.log(before); %>
-					<% console.log(curr); %>
 
 					<% let updated  = Math.round((curr - before)/60); %>
 
