@@ -26,7 +26,7 @@ function updateCurrent(db) {
   let host = 'http://api.openweathermap.org';
   let path = '/data/2.5/weather?zip=' + zip + '&appid=' + token;
   request(host + path, function(error, response, body) {
-    if (err) {
+    if (error) {
       console.error('weather error:', error);
       console.error('weather statusCode:', response && response.statusCode);
     }
@@ -88,7 +88,7 @@ function updateForecast(db) {
   let host = 'http://api.openweathermap.org';
   let path = '/data/2.5/forecast?zip=' + zip + '&appid=' + token;
   request(host + path, function(error, response, body) {
-    if (err) {
+    if (error) {
       console.error('forecast error:', error);
       console.error('forecast statusCode:', response && response.statusCode);
     }

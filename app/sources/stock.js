@@ -18,7 +18,7 @@ function update(db) {
       collection.deleteOne({symbol: symbols[i]});
       request(formatURL(symbols[i], token), function(err, response, body) {
         if (err) {
-          console.error('stock error:', error);
+          console.error('stock error:', err);
           console.error('stock statusCode:', response && response.statusCode);
         }
         let jbody = JSON.parse(body);
